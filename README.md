@@ -8,12 +8,9 @@ currency rates, on Arweave
 
 - hourly updates
 - uses https://openexchangerates.org
+- for a list of currencies **yes, it includes cryptocurrencies** see <a href="./currencies.json">currencies.json</a>
 
 ### How to use it
-
-Since it updates hourly, until the balance of the wallet is 0,
-I've added a tag called "TIME-HOUR"
-
 
 People should query for the latest file like this
 
@@ -37,6 +34,15 @@ TIME-HOUR represents the first part of the ISO8601 time formatting (GMT)
 so get the unix time, transform it to ISO8601, and leave just the hours
 
 **If you think of a better way to do this, let me know**
+
+#### Build it yourself
+
+edit the config file &
+run the binary **datafeed** (tested in Ubuntu 19.04)
+
+Since it updates hourly, until the balance of the wallet is 0,
+I've added a tag called "TIME-HOUR"
+
 
 #### Configuration file
 
