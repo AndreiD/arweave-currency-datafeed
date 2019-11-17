@@ -17,9 +17,12 @@ currency rates, on Arweave
 - uses https://openexchangerates.org
 - 193 currencies (it includes crypto) check them here <a href="./currencies.json">currencies.json</a>
 
-### How to use it
+### Get the currency rates API
 
-People should query for the latest file like this
+People should query using ARQL for the latest file like this
+
+Tip: you can use https://ibwslcweo3rb.arweave.net/1w40L6Z8WLrRTZiBRcp4qMPaMuJfblUlB9pqovkh5PQ 
+if you want to quickly test it
 
 ~~~~
 {
@@ -37,19 +40,19 @@ People should query for the latest file like this
 }
 ~~~~
 
-TIME-HOUR represents the first part of the ISO8601 time formatting (GMT)
-so get the unix time, transform it to ISO8601, and leave just the hours
+Since it updates hourly, I've added a tag called "TIME-HOUR"
+
+TIME-HOUR represents the first part of the ISO8601 time formatting (UTC)
+so get the unix time, transform it to ISO8601, and leave just the date & hours
 
 **If you think of a better way to do this, let me know**
 
-#### Build it yourself
+#### Use it as a template
 
-edit the config file &
-run the binary **datafeed** (tested in Ubuntu 19.04)
+If you want to use this as a template for your project, for whatever reason, it's simple
 
-Since it updates hourly, until the balance of the wallet is 0,
-I've added a tag called "TIME-HOUR"
-
+- edit the config file
+- check the logic under sync.go
 
 #### Configuration file
 

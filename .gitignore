@@ -30,3 +30,4 @@ Dockerfile-e
 .pytest_cache/*
 test/dockerclients/Vagrantfile
 test/dockerclients/.*
+/githubtoken
