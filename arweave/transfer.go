@@ -2,82 +2,44 @@ package arweave
 
 import (
 	"arweave-datafeed/configs"
-	"arweave-datafeed/utils"
 	"arweave-datafeed/utils/log"
-	"bytes"
 	"context"
-	"os"
 )
 
-// original from: https://github.com/Dev43/arweave-go
-
 // Transfer on arweave blockchain. Returns transaction hash, error
-func Transfer(ipfsHash string, useCompression string, fileName string, configuration *configs.ViperConfiguration) (string, int, error) {
-
-	buf := new(bytes.Buffer)
-
-	if useCompression == "true" {
-		log.Println("compression is activated")
-		err := utils.ArchiveFile(fileName)
-		if err != nil {
-			return "", -1, err
-		}
-
-		f, err := os.Open(fileName + ".zip")
-		if err != nil {
-			return "", -1, err
-		}
-		defer utils.Close(f)
-		_, err = buf.ReadFrom(f)
-		if err != nil {
-			return "", -1, err
-		}
-
-	} else {
-		log.Warn("for files bigger than 200 bytes, please consider using compression")
-		f, err := os.Open(fileName)
-		if err != nil {
-			return "", -1, err
-		}
-		defer utils.Close(f)
-
-		_, err = buf.ReadFrom(f)
-		if err != nil {
-			return "", -1, err
-		}
-	}
+func Transfer(rates []byte, tag string, configuration *configs.ViperConfiguration) (string, error) {
 
 	ar, err := NewTransactor(configuration.Get("nodeURL"))
 	if err != nil {
-		return "", -1, err
+		return "", err
 	}
 
 	arWallet := NewWallet()
 	err = arWallet.LoadKeyFromFile(configuration.Get("walletFile"))
 	if err != nil {
-		return "", -1, err
+		return "", err
 	}
 
-	log.Printf("creating a transaction with a payload of %d bytes", buf.Len())
+	log.Printf("creating a transaction with a payload of %d bytes", len(rates))
 
-	txBuilder, err := ar.CreateTransaction(context.Background(), ipfsHash, arWallet, "0", buf.Bytes(), "")
+	txBuilder, err := ar.CreateTransaction(context.Background(), tag, arWallet, "0", rates, "")
 	if err != nil {
-		return "", -1, err
+		return "", err
 	}
 
 	// sign the transaction
 	txn, err := txBuilder.Sign(arWallet)
 	if err != nil {
-		return "", -1, err
+		return "", err
 	}
 
 	// send the transaction
 	resp, err := ar.SendTransaction(context.Background(), txn)
 	if err != nil {
-		return "", -1, err
+		return "", err
 	}
 
 	log.Printf("arweave node responded %s", resp)
 
-	return txn.Hash(), buf.Len(), nil
+	return txn.Hash(), nil
 }

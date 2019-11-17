@@ -2,7 +2,7 @@
   "debug": true,
   "nodeURL": "https://arweave.net",
   "appID": "YOUR_OPENEXCHANGERATES_ORG_APPID_HERE",
-  "intervalSeconds": 3600,
+  "walletFile": "/PATH/TO/YOUR/arweave-wallet.json",
   "server": {
     "host": "localhost",
     "port": 5555

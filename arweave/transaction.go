@@ -2,6 +2,7 @@ package arweave
 
 import (
 	"arweave-datafeed/utils"
+	"arweave-datafeed/utils/log"
 	"crypto/sha256"
 	"encoding/json"
 	"math/big"
@@ -10,19 +11,25 @@ import (
 // original from: https://github.com/Dev43/arweave-go
 
 // NewTransaction creates a brand new transaction struct
-func NewTransaction(ipfsHash string, lastTx string, owner *big.Int, quantity string, target string, data []byte, reward string) *Transaction {
-	return &Transaction{
+func NewTransaction(tag string, lastTx string, owner *big.Int, quantity string, target string, data []byte, reward string) *Transaction {
+	tx := Transaction{
 		lastTx:   lastTx,
 		owner:    owner,
 		quantity: quantity,
 		target:   target,
 		data:     data,
 		reward:   reward,
-		tags: []Tag{{
-			Name:  "IPFS-Add",
-			Value: ipfsHash,
-		}},
+		tags:     nil,
 	}
+	err := tx.AddTag("TIME-HOUR", tag)
+	if err != nil {
+		log.Error(err)
+	}
+	err = tx.AddTag("DATAFEED", "currency")
+	if err != nil {
+		log.Error(err)
+	}
+	return &tx
 }
 
 // LastTx returns the last transaction of the account

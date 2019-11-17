@@ -4,12 +4,9 @@ import (
 	"arweave-datafeed/utils/log"
 	"context"
 	"encoding/base64"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
-	"os"
-	"strings"
 	"time"
 )
 
@@ -52,36 +49,4 @@ func EncodeToBase64(toEncode []byte) string {
 // DecodeString decodes from base64 raw url encoding to byte array
 func DecodeString(toDecode string) ([]byte, error) {
 	return base64.RawURLEncoding.DecodeString(toDecode)
-}
-
-// CheckValidityIPFSHash - checks if the passed hash is correct size & starts with Qm
-func CheckValidityIPFSHash(ipfsHash string) error {
-	if len(ipfsHash) != 46 {
-		return fmt.Errorf("it doesn't look like an IPFS hash. not 46 characters")
-	}
-	if !strings.HasPrefix(ipfsHash, "Qm") {
-		return fmt.Errorf("it doesn't look like an IPFS hash. doesn't start with Qm")
-	}
-	return nil
-}
-
-// CheckValidityArweaveTxID - checks if an id is an Arweave ID...at least in length
-func CheckValidityArweaveTxID(id string) error {
-	if len(id) != 43 {
-		return fmt.Errorf("this doesn't look like a transaction id from arweave. length is not 43")
-	}
-	return nil
-}
-
-// CheckFileExists - check if file exists
-func CheckFileExists(filename string) bool {
-	_, err := os.Stat(filename)
-	if err == nil {
-		return true
-	} else if os.IsNotExist(err) {
-		return false
-	} else {
-		log.Errorf("can't verify if %s exists or not", filename)
-		return false
-	}
 }

@@ -60,7 +60,7 @@ func main() {
 	server.SetKeepAlivesEnabled(true)
 
 	// out main logic
-	startSync()
+	startCronService()
 
 	// Serve'em
 	go func() {
@@ -85,8 +85,6 @@ func main() {
 	}
 	log.Println("server exiting. bye!")
 }
-
-
 
 func corsMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
