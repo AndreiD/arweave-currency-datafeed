@@ -1,4 +1,11 @@
-# :moneybag: Arweave Currency Datafeed 
+
+<p align="center">
+  <h3 align="center">Arweave Currency Datafeed</h3>
+  <p align="center">currency rates, on Arweave</p>
+</p>
+
+---
+# :moneybag:
 
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AndreiD/arweave-ipfs-bridge/blob/master/LICENSE)
 
@@ -79,6 +86,10 @@ fell free to create an issue
 
 - [x] tags
 - [ ] awaiting your idea
+
+## Sponsors
+
+Does your company use arweave-datafeed ? Help keep the project bug-free and feature rich by sending a small donation
 
 
 ## License
