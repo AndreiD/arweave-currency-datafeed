@@ -8,7 +8,7 @@ currency rates, on Arweave
 
 - hourly updates
 - uses https://openexchangerates.org
-- for a list of currencies **yes, it includes cryptocurrencies** see <a href="./currencies.json">currencies.json</a>
+- for a list of currencies (it includes crypto) see <a href="./currencies.json">currencies.json</a>
 
 ### How to use it
 
