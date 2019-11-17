@@ -49,7 +49,6 @@ func main() {
 
 	api := router.Group("/api")
 	api.GET("/health", healthHandler)
-	api.GET("/balance", balanceHandler)
 
 	server := &http.Server{
 		Addr:           configuration.Get("server.host") + ":" + strconv.Itoa(configuration.GetInt("server.port")),
