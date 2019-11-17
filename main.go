@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const version = "1.0 Alpha"
+const version = "1.1a"
 
 var configuration *configs.ViperConfiguration
 var router *gin.Engine
