@@ -10,12 +10,12 @@ import (
 
 // startCronService starts the cron service every hour
 func startCronService() {
-	uploadRatesToArweave()
+
 	c := cron.New()
-	//_, err := c.AddFunc("* * * * *", uploadRatesToArweave) // replace first with * from every minute, and with 0 for every hour
-	//if err != nil {
-	//	log.Error(err)
-	//}
+	_, err := c.AddFunc("0 * * * *", uploadRatesToArweave) // replace first with * from every minute, and with 0 for every hour
+	if err != nil {
+		log.Error(err)
+	}
 	c.Start()
 }
 
