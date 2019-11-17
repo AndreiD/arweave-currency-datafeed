@@ -12,7 +12,8 @@ import (
 func startCronService() {
 
 	c := cron.New()
-	_, err := c.AddFunc("0 * * * *", uploadRatesToArweave) // replace first with * from every minute, and with 0 for every hour
+	// replace first with * from every minute, and with 0 for every hour
+	_, err := c.AddFunc("0 * * * *", uploadRatesToArweave)
 	if err != nil {
 		log.Error(err)
 	}
