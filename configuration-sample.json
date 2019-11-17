@@ -1,0 +1,10 @@
+{
+  "debug": true,
+  "nodeURL": "https://arweave.net",
+  "appID": "YOUR_OPENEXCHANGERATES_ORG_APPID_HERE",
+  "intervalSeconds": 3600,
+  "server": {
+    "host": "localhost",
+    "port": 5555
+  }
+}
