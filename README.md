@@ -11,11 +11,13 @@
 
 currency rates, on Arweave
 
+## Click here for what it stores -> <a href="./currencies.json">currencies.json</a>
+
 ### Features
 
 - hourly updates
-- uses https://openexchangerates.org
-- 193 currencies (it includes crypto) check them here <a href="./currencies.json">currencies.json</a>
+- uses https://openexchangerates.org (the free tier plan, limited to ~1 api call per hour)
+
 
 ### Get the currency rates API
 
