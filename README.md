@@ -49,6 +49,12 @@ so get the unix time, transform it to ISO8601, and leave just the date & hours
 
 **If you think of a better way to do this, let me know**
 
+### Code your own datafeed 
+
+- step 1: think about how would people query your datafeed
+- step 2: check the logic under sync.go.
+- step 3: reuse the config file & the push to arweave functions
+
 #### Use it as a template
 
 If you want to use this as a template for your project, for whatever reason, it's simple
