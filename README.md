@@ -7,6 +7,8 @@
 ---
 # :moneybag:
 
+### Wallet of this feed -> hjCuCtTDySi9_KNtRxmPIsAyYVrTXeJZNP3R1aHfNPg
+
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/AndreiD/arweave-ipfs-bridge/blob/master/LICENSE)
 
 currency rates, on Arweave
